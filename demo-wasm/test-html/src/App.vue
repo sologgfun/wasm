@@ -23,13 +23,17 @@ function randomString(e) {
     const str = randomString(999999);  //生成999999位随机字符串
 
     //打印js生成的md5及所需时间
-    console.time('js');
+    var begin=Date.now();
     console.log('%cjsMd5:' + md5(str), 'color:blue');
-    console.timeEnd('js');
+    var end= Date.now();
+    var timeSpent=(end-begin)/1000+"secs";;
+    console.log(`js:${timeSpent}`);
     //打印wasm生成的md5及所需时间
-    console.time('wasm');
+    begin=Date.now();
     console.log('%cwasmMd5:' + module.digest(str), 'color:green');
-    console.timeEnd('wasm');
+    end= Date.now();
+    timeSpent=(end-begin)/1000+"secs";;
+    console.log(`wasm:${timeSpent}`);
 })();
 
 export default {
