@@ -27,6 +27,28 @@ function randomString(e) {
     end= Date.now();
     timeSpent=(end-begin)/1000+"secs";;
     console.log(`wasm:${timeSpent}`);
+
+    console.log('===100===')
+    let i = 0
+    begin=Date.now();
+    while (i<10) {
+        md5(randomString(999999));
+        i++;
+    }
+    end= Date.now();
+    timeSpent=(end-begin)/1000+"secs";;
+    console.log(`js100:${timeSpent}`);
+
+    let j = 0
+    begin=Date.now();
+    while (j<10) {
+        module.digest(randomString(999999));
+        j++;
+    }
+    end= Date.now();
+    timeSpent=(end-begin)/1000+"secs";;
+    console.log(`md5100:${timeSpent}`);
+
 })();
 
 // module.exports = {
